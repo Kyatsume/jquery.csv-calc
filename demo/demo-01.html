@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Demo 01</title>
+    <style>
+      #products {
+        width: 900px;
+      }
+      #products > ul,
+      #products > ul > li {
+        margin: 0;
+        padding: 0;
+      }
+      #products > ul > li {
+        list-style: none;
+        width: 240px;
+        padding: 30px;
+        float: left;
+      }
+      #products > ul > li:nth-child(odd) {
+        background: #fec;
+      }
+      #products > ul > li:nth-child(even) {
+        background: #cfe;
+      }
+      #products dt,
+      #products dd {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+      }
+      #products dt {
+        width: 30%;
+      }
+      #products dd {
+        width: 70%;
+        font-weight: bold;
+      }
+      .sum,
+      .total {
+        font-weight: bold;
+      }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="../jquery.csv-calc.js"></script>
+    <script>
+      $(function() {
+        $('#products').csvCalc('../products.csv');
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Demo 01</h1>
+    <section id="products">
+      <h2>Products</h2>
+      <ul>
+        <li data-csvcalc-repeat>
+          <dl>
+            <dt>id</dt><dd data-csvcalc-cell="0" data-csvcalc-id></dd>
+            <dt>name</dt><dd data-csvcalc-cell="1"></dd>
+            <dt>price</dt><dd data-csvcalc-cell="2" data-csvcalc-price></dd>
+          </dl>
+          <input data-csvcalc-input type="number" min="0" value="0">
+          <div data-csvcalc-sum class="sum">0</div>
+        </li>
+      </ul>
+      <h4>total</h4>
+      <p data-csvcalc-total class="total">0</p>
+    </section>
+  </body>
+</html>

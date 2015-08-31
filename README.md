@@ -47,7 +47,7 @@ $(function() {
 ※テーブル形式だけでなく、様々な表示に対応できます。
 
 - - -
-## custom data attributes
+## Custom data attributes
 ##### data-csvcalc-repeat
 CSVの1行ごとに繰り返し生成される要素に対して指定します。  
 値は不要です。
