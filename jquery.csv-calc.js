@@ -128,7 +128,6 @@ $.extend(CsvCalc.prototype, /** @lends CsvCalc.prototype */ {
       // バリデーションを行う
       var amount = self._validateNumber(self, $(ev.target).val());
       $(ev.target).val(amount); // 画面上の全角数字は、ここで半角となる。
-      if (amount === 0) return; // ゼロなら、以下の計算は省略する。
 
       // 合計を算出・表示
       var parent = $(ev.target).parents('[data-csvcalc-repeat]');
