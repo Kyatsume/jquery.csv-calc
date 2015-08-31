@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+body {
+  font-family: Meiryo, sans-serif;
+}
+h1 > small {
+  display: block;
+  font-weight: normal;
+  font-size: 60%;
+}
+table, th, td {
+  border-collapse: collapse;
+}
+th, td {
+  padding: 8px 16px;
+}
+.product-info:nth-child(odd) {
+  background: #def;
+}
+.th {
+  background: #888;
+  color: #fff;
+}
+.total {
+  font-weight: bold;
+}
+.price,
+.sum,
+.total,
+.th-total {
+  text-align: right;
+}
