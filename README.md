@@ -3,7 +3,7 @@ CSV形式の商品一覧をAjaxで読み込んでHTML内に注文表として表
 
 - - -
 ## Demo
-http://www.usamimi.info/~sutara/sample2/csv-calc/
+[//sutara79.github.io/jquery.csv-calc/](//sutara79.github.io/jquery.csv-calc/)
 
 - - -
 ## Usage
@@ -126,7 +126,7 @@ HTML側でも`<input type="number" step="0.5">`のようにstep属性を記述�
 ## Author
 Yuusaku Miyazaki (宮崎 雄策)
 
-- Mail: toumin.m7@gmail.com
+- Mail: <toumin.m7@gmail.com>
 - [Blog](//sutara79.hatenablog.com/entry/2015/08/29/104513)
 
 - - -

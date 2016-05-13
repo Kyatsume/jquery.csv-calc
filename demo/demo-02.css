@@ -1,0 +1,35 @@
+section {
+  width: 900px;
+}
+section dt,
+section dd,
+section ul,
+section li {
+  margin: 0;
+  padding: 0;
+}
+section li {
+  float: left;
+  list-style: none;
+  padding: 30px;
+  width: 240px;
+}
+section > ul > li:nth-child(odd) {
+  background: #fec;
+}
+section > ul > li:nth-child(even) {
+  background: #cfe;
+}
+section dt {
+  display: inline-block;
+  width: 30%;
+}
+section dd {
+  display: inline-block;
+  font-weight: bold;
+  width: 70%;
+}
+.sum,
+.total {
+  font-weight: bold;
+}

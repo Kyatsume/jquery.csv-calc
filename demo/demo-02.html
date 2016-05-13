@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo 2</title>
+<link rel="stylesheet" href="demo-02.css">
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="../dist/jquery.csv-calc.js"></script>
+<script>
+  $(function() {
+    $('#products').csvCalc('products.csv');
+  });
+</script>
+</head>
+<body>
+<h1>Demo 2</h1>
+<section id="products">
+  <h2>Products</h2>
+  <ul>
+    <li data-csvcalc-repeat>
+      <dl>
+        <dt>id</dt><dd data-csvcalc-cell="0" data-csvcalc-id></dd>
+        <dt>name</dt><dd data-csvcalc-cell="1"></dd>
+        <dt>price</dt><dd data-csvcalc-cell="2" data-csvcalc-price></dd>
+      </dl>
+      <input data-csvcalc-input type="number" min="0" value="0">
+      <div data-csvcalc-sum class="sum">0</div>
+    </li>
+  </ul>
+  <h4>total</h4>
+  <p data-csvcalc-total class="total">0</p>
+</section>
+</body>
+</html>

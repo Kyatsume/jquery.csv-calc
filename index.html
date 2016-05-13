@@ -1,50 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>jquery.csv-calc</title>
-    <link rel="stylesheet" href="demo.css">
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="jquery.csv-calc.js"></script>
-    <script>
-      $(function() {
-        $('#products').csvCalc('products.csv');
-      });
-    </script>
-  </head>
-  <body>
-    <h1>
-      jquery.csv-calc
-      <small>jQuery plugin to calc the total of each prices from a CSV</small>
-    </h1>
-    <ul>
-      <li><strong>Source:</strong> <a href="//github.com/sutara79/jquery.csv-calc">github.com/sutara79/jquery.csv-calc</a></li>
-    </ul>
-    <table id="products">
-      <tr class="th">
-        <th>id</th>
-        <th>name</th>
-        <th>price</th>
-        <th>amount</th>
-        <th>sum</th>
-      </tr>
-      <tr class="product-info" data-csvcalc-repeat>
-        <td data-csvcalc-cell="0" data-csvcalc-id></td>
-        <td data-csvcalc-cell="1"></td>
-        <td data-csvcalc-cell="2" data-csvcalc-price class="price"></td>
-        <td><input data-csvcalc-input class="amount" type="number" min="0" value="0"></td>
-        <td data-csvcalc-sum class="sum">0</td>
-      </tr>
-      <tr class="th">
-        <th colspan="4" class="th-total">total</th>
-        <td data-csvcalc-total class="total">0</td>
-      </tr>
-    </table>
-    <hr>
-    <h4>Other sample</h4>
-    <ul>
-      <li><a href="demo/demo-01.html">Demo 01</a></li>
-    </ul>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>jquery.csv-calc</title>
+</head>
+<body>
+<header>
+  <h1>jquery.csv-calc</h1>
+  <a href="//github.com/sutara79/jquery.csv-calc">View on GitHub</a></li>
+</header>
+<article>
+  <h2>Demo</h2>
+  <ul>
+    <li><a href="demo/demo-01.html">Demo 1</a></li>
+    <li><a href="demo/demo-02.html">Demo 2</a></li>
+  </ul>
+</article>
+</body>
 </html>
