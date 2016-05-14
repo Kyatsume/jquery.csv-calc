@@ -9,7 +9,7 @@ CSV形式の商品一覧をAjaxで読み込んでHTML内に注文表として表
 ## Usage
 ###### Load plugin
 ```html
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-2.2.3.min.js"></script>
 <script src="jquery.csv-calc.js"></script>
 ```
 

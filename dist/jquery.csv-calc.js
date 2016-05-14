@@ -1,10 +1,10 @@
 /**
  * @file jQuery Plugin: jquery.csv-calc
- * @version 1.0.0
+ * @version 1.0.2
  * @author Yuusaku Miyazaki <toumin.m7@gmail.com>
  * @license MIT License
  */
-(function($) {
+(function ($) {
 
 /**
  * @desc プラグインをjQueryのプロトタイプに追加する
@@ -17,8 +17,8 @@
  * @param {boolean} [option.ignore_last_line=true] - CSVの最終行をデータとして無視するかどうか
  * @param {boolean} [option.only_integer=true] - 入力値を整数のみに限るかどうか
  */
-$.fn.csvCalc = function(file, option) {
-  return this.each(function() {
+$.fn.csvCalc = function (file, option) {
+  return this.each(function () {
     new CsvCalc(this, file, option);
   });
 };
@@ -31,14 +31,14 @@ $.fn.csvCalc = function(file, option) {
  * @param {string} file - CSVファイルへのパス
  * @param {Object} option - オプションを格納した連想配列
  */
-function CsvCalc(elem, file, option) {
+function CsvCalc (elem, file, option) {
   this.elem = elem;
   this.file = file;
   this.option = option;
 
-  this._setOption();
-  this._showCSV();
-  this._calcTotal();
+  this.setOption();
+  this.showCSV();
+  this.calcTotal();
 }
 
 $.extend(CsvCalc.prototype, /** @lends CsvCalc.prototype */ {
@@ -46,7 +46,7 @@ $.extend(CsvCalc.prototype, /** @lends CsvCalc.prototype */ {
    * @private
    * @desc オプションの初期化
    */
-  _setOption: function() {
+  setOption: function() {
     this.option =  $.extend({
       line_endings: '\n',
       ignore_first_line: true,
@@ -62,39 +62,41 @@ $.extend(CsvCalc.prototype, /** @lends CsvCalc.prototype */ {
    * @private
    * @desc CSVを読み込み、整形し、HTML内で表示する
    */
-  _showCSV: function() {
+  showCSV: function () {
     var self = this;
-    $.get(self.file, function(data) {
-      data = self._csvToArray(self, data);
-      self._showAtHtml(self, data);
+    $.get(self.file, function (data) {
+      data = self.csvToArray.call(self, data);
+      self.showAtHtml.call(self, data);
     });
   },
 
   /**
    * @private
    * @desc CSVを配列に変換する
-   * @param {Object} self - このクラスのインスタンスオブジェクト
    * @param {string} data - CSVファイルの中身
    * @return {Array}
    */
-  _csvToArray: function(self, data) {
-    data = data.split(self.option.line_endings);
-    if (self.option.ignore_first_line) data.shift(); // 先頭行を取り除く
+  csvToArray: function (data) {
+    data = data.split(this.option.line_endings);
+    if (this.option.ignore_first_line) {
+      data.shift(); // 先頭行を取り除く
+    }
     for (var i = 0; i < data.length; i++) {
       data[i] = data[i].split(',');
     }
-    if (self.option.ignore_last_line) data.pop(); // 最終行を取り除く
+    if (this.option.ignore_last_line) {
+      data.pop(); // 最終行を取り除く
+    }
     return data;
   },
 
   /**
    * @private
    * @desc 整形してHTML内で表示する
-   * @param {Object} self - このクラスのインスタンスオブジェクト
    * @param {Array} data - CSVを配列に変換したもの
    */
-  _showAtHtml: function(self, data) {
-    var original = $(self.elem).find('[data-csvcalc-repeat]');
+  showAtHtml: function (data) {
+    var original = $(this.elem).find('[data-csvcalc-repeat]');
     var column_id = $(original).find('[data-csvcalc-id]').attr('data-csvcalc-cell');
     for (var m = 0; m < data.length; m++) {
       var clone = $(original).clone();
@@ -122,11 +124,11 @@ $.extend(CsvCalc.prototype, /** @lends CsvCalc.prototype */ {
    * @private
    * @desc 総額を算出する
    */
-  _calcTotal: function() {
+  calcTotal: function () {
     var self = this;
-    $(document).on('change', $(self.elem).find('[data-csvcalc-input]'), function(ev) {
+    $(document).on('change', $(self.elem).find('[data-csvcalc-input]'), function (ev) {
       // バリデーションを行う
-      var amount = self._validateNumber(self, $(ev.target).val());
+      var amount = self.validateNumber.call(self, $(ev.target).val());
       $(ev.target).val(amount); // 画面上の全角数字は、ここで半角となる。
 
       // 合計を算出・表示
@@ -151,16 +153,17 @@ $.extend(CsvCalc.prototype, /** @lends CsvCalc.prototype */ {
   /**
    * @private
    * @desc ユーザの入力を検査: 数値
-   * @param {Object} self - このクラスのインスタンスオブジェクト
    * @param {string} val - 対象の入力欄の値
    * @return {number} - 検査済みの数値を返す
    */
-  _validateNumber: function(self, val) {
+  validateNumber: function (val) {
     val = val.replace(/[０-９]/g, function(s) {
       return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
     });
-    val = (self.option.only_integer) ? parseInt(val, 10) : Number(val);
-    if (isNaN(val)) val = 0; // 数字以外は強制的にゼロとする。
+    val = (this.option.only_integer) ? parseInt(val, 10) : Number(val);
+    if (isNaN(val)) {
+      val = 0; // 数字以外は強制的にゼロとする。
+    }
     return val;
   }
 }); // end of "$.extend"
