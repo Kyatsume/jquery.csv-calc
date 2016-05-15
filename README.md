@@ -1,12 +1,15 @@
-# jquery.csv-calc
-CSV形式の商品一覧をAjaxで読み込んでHTML内に注文表として表示し、ユーザーの入力に応じて合計金額を算出するjQueryプラグインです。  
+# [jquery.csv-calc](//github.com/sutara79/jquery.csv-calc)
+jQuery plugin to load a CSV of products and calculate a sum of prices.  
+(CSV形式の商品一覧をAjaxで読み込んでHTML内に注文表として表示し、ユーザーの入力に応じて合計金額を算出するjQueryプラグインです。)  
 
 - - -
 ## Demo
 [//sutara79.github.io/jquery.csv-calc/](//sutara79.github.io/jquery.csv-calc/)
 
+
 - - -
 ## Usage
+
 ###### Load plugin
 ```html
 <script src="//code.jquery.com/jquery-2.2.3.min.js"></script>
